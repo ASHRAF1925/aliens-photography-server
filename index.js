@@ -1,7 +1,8 @@
-const { request } = require('express');
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const express=require('express');
 const app=express();
+app.use(express.json());
 const path=require('path');
 const cors=require('cors');
 const multer = require('multer');
@@ -56,12 +57,12 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run (){
     try{
         const servicesCollection =client.db('AlienPhotographyDatabase').collection("services");
-        const service={
-            name:"test",
-            price:"test"
-        }
-        const result=await servicesCollection.insertOne(service);
-        console.log(result);
+       app.post('/services',async (req,res)=>{
+        const service=req.body;
+        console.log(service);
+        const result= await servicesCollection.insertOne(service);
+        res.send(result);
+       })
 
     }
     finally{
