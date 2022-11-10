@@ -25,25 +25,25 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
-//  function verifyJWT(req,res,next){
-//   const authheader=req.headers.authorization;
-//   if(!authheader){
-//     res.status(401).send({message:"unauthorized access"})
-//   }
-//   const token=authheader.split(' ')[1]
-//   jwt.verify(token,process.env.ACCESS_TOKEN,function(err,decoded){
+ function verifyJWT(req,res,next){
+  const authheader=req.headers.authorization;
+  if(!authheader){
+    res.status(401).send({message:"unauthorized access"})
+  }
+  const token=authheader.split(' ')[1]
+  jwt.verify(token,process.env.ACCESS_TOKEN,function(err,decoded){
 
-//     if(err){
-//       res.status(401).send({message:"unauthorized Access"})
-//     }
-//     req.decoded=decoded;
-//     next();
+    if(err){
+      res.status(401).send({message:"unauthorized Access"})
+    }
+    req.decoded=decoded;
+    next();
 
 
-//   })
-//   console.log(req.headers.authorization)
+  })
+  console.log(req.headers.authorization)
 
-//  }
+ }
 
 async function run() {
   try {
@@ -121,7 +121,7 @@ async function run() {
     });
    // verifyJWT,
     app.get("/services/user/review", async (req, res) => {
-      console.log(req.headers.authorization);
+      console.log(req.decoded);
 
       const decoded=req.decoded;
 
