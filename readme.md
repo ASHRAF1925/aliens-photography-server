@@ -5,18 +5,20 @@ Alien's Photography  is a personal website where you can get different services.
 
 ## Features
 
-- Different Types of Services
+- Laptops of different brand
 - Secure login
 - Register options
 - Data loaded from API
 - Attractive UI
 - Build with new technologies etc.
-- Personal Database
+- Used React Form
+- Used React Query and AXIOS 
 
 ## Technology,Libraries and Language Used
 
 - HTML
 - CSS
+- DaisyUi
 - JAVA SCRIPT
 - Tailwind CSS
 - React.js
@@ -27,7 +29,7 @@ Alien's Photography  is a personal website where you can get different services.
 
 - Log in with Email and Password
 - Log in with Google Popup
-- Log in with Github
+
 - JWT authentication
 
 
